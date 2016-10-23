@@ -1,0 +1,405 @@
+---
+title: "Introduzione all'ambiente di programmazione $R$"
+author: "P. Scordino"
+ext_widgets:
+  rCharts: libraries/nvd3
+highlighter: highlight.js
+hitheme: tomorrow
+job: null
+knit: slidify::knit2slides
+logo: Rlogo.png
+mode: selfcontained
+framework: io2012
+subtitle: Linux Day - Biella 2016
+biglogo: linuxday_logo.png
+widgets:
+- mathjax
+- quiz
+- bootstrap
+github :
+  user: freeEagle76
+  repo: https://github.com/FreeEagle76/R-Coding-Slides.git
+---
+
+## Sommario
+
+<p><img src="http://twit88.com/blog/wp-content/uploads/2008/07/windowslivewriterstatistical-bf51r-project-2.jpg" style="float:right;align="middle";width:100px;height:80px;"></p>
+
+1. I dati
+2. L'ambiente [[$R$](https://www.r-project.org/)](https://www.r-project.org/)
+3. Perchè usare [[$R$](https://www.r-project.org/)](https://www.r-project.org/) ?
+4. Gli oggetti di [[$R$](https://www.r-project.org/)](https://www.r-project.org/)
+  - Scalari
+  - Vettori
+  - Matrici e Array
+  - Dataframe
+  - Liste
+5. Input/Output
+6. Funzioni personalizzate
+7. Cenni sui cicli
+8. Le funzioni grafiche
+
+--- &vcenter
+
+## I dati
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Data_visualization_process_v1.png/800px-Data_visualization_process_v1.png" style=align="middle";width:700px;height:500px;"></p>
+
+--- &vcenter 
+
+## La curva d'apprendimento
+
+![](https://pbs.twimg.com/media/CiSMsEpXEAATXry.jpg:large)
+
+---.quote, &vcenter
+
+## L'ambiente [$R$](https://www.r-project.org/)
+
+L'ambiente [[$R$](https://www.r-project.org/)](https://www.r-project.org/) è caratterizzato da una __console__, dove vengono digitati i comandi, un __workspace__, dove vengono memorizzati tutti gli oggetti creati e un __editor di testo__ che permette di scrivere una serie di comandi in sequenza e salvarli in un file __nomefile.R__ chiamato _script_.
+
+[[$R$](https://www.r-project.org/)](https://www.r-project.org/) memorizza due file ___.Rdata___ e ___.Rhistory___ nella directory di lavoro, il primo contiene tutti gli oggetti creati durante la sessione di lavoro ossia memorizza il workspace, il secondo contiene la lista dei comandi usati nella stessa sessione di lavoro.
+
+--- .quote, &vcenter
+
+## L'ambiente [[$R$](https://www.r-project.org/)](https://www.r-project.org/)
+
+<h3>RGui per Windows
+
+<p><img src="http://tutorials.iq.harvard.edu/R/Rintro/images/Rgui.png" style=align="middle";width:700px;height:400px;"></p>
+
+
+---.quote, &vcenter
+
+## L'ambiente [$R$](https://www.r-project.org/)
+
+<h3>[RStudio](https://www.rstudio.com/) GUI multipiattaforma
+
+<p><img src="http://wiki.awf.forst.uni-goettingen.de/wiki/images/f/f6/02-RStudio.jpg" style=align="middle";width:750px;height:400px;"></p>
+  
+
+--- 
+
+## Perchè usare [$R$](https://www.r-project.org/) ?
+
+>1. __Libero__, per usarlo non c'è bisogno di comprare nessuna licenza.
+>2. __Open source__, a codice aperto, chiunque può esaminare il codice e modificarlo per effettuare migliorie.
+>3. ___Modulabile___, esistono più di 6000 packages raggruppati nel [CRAN](https://cran.r-project.org/), con funzioni che trovano applicazione in svariati campi, che possono essere installati ampliando le già notevoli potenzialità di [$R$](https://www.r-project.org/).
+>4. ___Customizzabile___, chiunque può crearsi funzioni o addirittura packages su misura a seconda delle proprie esigenze.
+>5. ___Multipiattaforma___, può essere installato su computer con diversi SO.
+>6. ___Comunità/Supporto___, [$R$](https://www.r-project.org/) ha dietro una grossa comunità online di utilizzatori e sviluppatori che mettono a disposizione la loro esperienza a tutti, attraverso newsletter, forum, blog, siti.
+
+---
+
+## Perchè usare [$R$](https://www.r-project.org/) ?
+
+Sul sito [r4stat.com](http://r4stats.com/2016/06/08/r-passes-sas-in-scholarly-use-finally/) è stato pubblicato un interessante articolo sulla popolarità dei vari software usati nell'ambito dell'elaborazione dei dati, di seguito riporto due grafici riassuntivi.
+
+
+<p><img src="http://i0.wp.com/r4stats.com/wp-content/uploads/2012/04/Fig_2e_ScholarlyImpactSubset.png?resize=640%2C443" style="float:right;width:450px;height:350px;"></p>
+
+<p><img src="http://i0.wp.com/r4stats.com/wp-content/uploads/2012/04/Fig_2d_ScholarlyImpact.png" style="float:left;width:450px;height:350px;"></p>
+
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___Scalari numerici___
+
+Gli scalari sono semplicemente delle variabili a cui è stato assegnato un valore che può essere numerico, logico, character(stringa).
+
+```{r}
+x<- 14
+y<- 23
+```
+
+```{r}
+x
+y
+```
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___Scalari logici___
+
+```{r}
+a<- TRUE
+b<- FALSE
+
+class(a)
+a==b
+```
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___Scalari character (stringhe)___
+
+```{r}
+n<- "Pasquale"
+c<- "Scordino"
+class(n)
+
+n_c<- paste(n,c)
+
+n_c
+```
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___I vettori___
+
+I vettori sono una seguenza monodimensionale di valori, con indice [i] che come per gli scalari possono essere numeri, logici e character (stringhe). Anche sui vettori si possono effettuare una serie di manipolazioni come per gli scalari.
+
+```{r}
+x<- c(23,44,55,33,66,21,32,45,65)
+y<- c(TRUE,FALSE,TRUE,TRUE)
+z<- c("A","B","C")
+```
+
+```{r}
+x<- runif(10, 1, 10)
+x
+```
+
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___I vettori___
+
+```{r, warning=FALSE, fig.width=7, fig.height=5, fig.align='center'}
+plot(x, main = "Plot del vettore x" ,ylab = "Valori del vettore x", col="red")
+```
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___Le matrici___
+
+Le matrici possono essere considerate un insieme di vettori che vanno a formare una griglia di valori ___numerici___ bidimensionale con indici [i,j]
+
+```{r}
+m.1<- matrix(1:25, 5, 5)
+m.1
+```
+
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___Gli array___
+
+Gli array sono un insieme di matrici che formarmano un cubo o un parallelepipedo di valori ___numerici___ tridimensionali con indici [i,j,z]
+
+```{r}
+m.1<- array(1:8, c(1,4,2))
+m.1
+```
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___Gli array___
+
+```{r}
+m.2<- array(1:16, c(2,4,2))
+m.2
+```
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___I Dataframe___
+
+I dataframe sono delle matrici che possono contenere vettori di tutti i tipi, numerici, character (stringhe), logici
+
+```{r}
+L3 <- LETTERS[1:3]
+L<- sample(L3, 7, replace = TRUE)
+data.frame(1, 1:7, L)
+
+```
+
+--- &vcenter
+
+## Gli oggetti di [$R$](https://www.r-project.org/):
+
+___Le liste___
+
+Le liste sono dei vettori che possono contenere tutti i tipi di oggetti (vettori, matrici, array, dataframe, liste)
+
+```{r}
+L<- list(1:3, LETTERS[1:3], 5:6)
+L
+```
+
+---
+
+## Input/Output in [$R$](https://www.r-project.org/):
+
+I principali comandi per ___importare___ dataset dentro l'ambiente $R$ sono:
+
+```{r, warning=FALSE, results='hide'}
+
+# read.csv()
+
+# read.table()
+
+```
+
+I principali comandi per ___esportare___ dataset elaborati fuori l'ambiente $R$ sono:
+
+```{r, warning=FALSE, results='hide'}
+
+# write.csv()
+
+# write.table()
+
+```
+
+
+--- &vcenter
+
+## Funzioni personalizzate in [$R$](https://www.r-project.org/):
+
+$R$ da la possibilità di costruire funzioni personalizzate che potrebbero non essere presenti nei packages di base o in quelli raccolti nel [CRAN](https://cran.r-project.org/)
+
+```{r}
+
+f<- function(x, y){ 
+    z <- x^2 + y^2; 
+    x+y+z }
+
+f(0:7, 1)
+
+```
+
+--- &vcenter
+
+## Funzioni personalizzate in [$R$](https://www.r-project.org/):
+
+```{r, fig.width=6, fig.height=2.5, fig.align='center'}
+
+normistmed <- function(quantinevuoi){
+              temp <- rnorm(quantinevuoi)
+              hist(temp)
+              mean(temp)    
+              } 
+
+normistmed(1000)
+```
+
+--- &vcenter
+
+## Le strutture di controllo (i cicli) in [$R$](https://www.r-project.org/):
+
+```{r}
+
+x <- y <- c(1:3)
+for (i in 1:length(x)){  
+     y[i] <- log(x[i])
+     print(y[i])}
+
+y <- log(x)                                
+y
+```
+
+--- &vcenter
+
+## Le strutture di controllo (i cicli) in [$R$](https://www.r-project.org/):
+
+
+```{r}
+sapply(x, log)
+lapply(x, log)
+```
+
+---
+
+## Le funzioni di plot in [$R$](https://www.r-project.org/):
+
+$R$ ha  una ricca quantità di funzioni e parametri per costruire qualsiasi tipo di grafico
+
+```{r, fig.width=6, fig.height=4.5, fig.align='center'}
+require(stats) # for lowess, rpois, rnorm
+plot(cars, col="red")
+lines(lowess(cars), col="blue")
+```
+
+--- &vcenter
+
+## Le funzioni di plot in [$R$](https://www.r-project.org/):
+
+```{r, echo=FALSE, fig.width=6, fig.height=4.5, fig.align='center'}
+require(ggplot2)
+
+df <- data.frame(gp = factor(rep(letters[1:3], each = 10)), 
+                 y = rnorm(30))
+ds <- plyr::ddply(df, "gp", plyr::summarise, mean = mean(y), sd = sd(y))
+
+ggplot(df, aes(x = gp, y = y)) +
+   geom_point() +
+   geom_point(data = ds, aes(y = mean),
+              colour = 'red', size = 3)
+
+```
+
+--- &vcenter
+
+## Le funzioni di plot in [$R$](https://www.r-project.org/):
+
+```{r, fig.width=6, fig.height=4, fig.align='center'}
+ggplot() +
+  geom_point(data = df, aes(x = gp, y = y)) +
+  geom_point(data = ds, aes(x = gp, y = mean),
+                        colour = 'red', size = 3) +
+  geom_errorbar(data = ds, aes(x = gp, y = mean,
+                    ymin = mean - sd, ymax = mean + sd),
+                    colour = 'red', width = 0.4)
+```
+
+---
+
+## Grafico interattivo
+
+```{r echo = F, results = 'asis'}
+require(rCharts)
+haireye = as.data.frame(HairEyeColor)
+n1 <- nPlot(Freq ~ Hair, group = 'Eye', type = 'multiBarChart',
+  data = subset(haireye, Sex == 'Male')
+)
+n1$print('chart1')
+```
+
+---
+
+## Risorse web
+
+- https://blog.rstudio.org/
+- http://statisticaconr.blogspot.it/
+- https://www.r-bloggers.com/
+- http://www.statmethods.net/
+- http://blog.revolutionanalytics.com/
+- http://shinyapps.org/apps/RGraphCompendium/index.php
+- http://rgraphgallery.blogspot.it/
+
+--- 
+
+<p><img src="https://www.r-project.org/logo/Rlogo.svg" style="float:right;align="middle";width:100px;height:50px;"></p>
+
+## GRAZIE!!!
+
+<p><img src="https://lh3.googleusercontent.com/-w4xTmmx8Pnc/VZMY_YXulII/AAAAAAAAQXM/QV_AVXO9kfY/w256-h256/15-Most-Interesting-Linux-Facts.png" style="float:left;align="middle";width:300px;height:250px;"></p>
+
+

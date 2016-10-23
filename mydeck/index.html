@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduzione all'ambiente di programmazione $R$</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduzione all'ambiente di programmazione $R$">
+  <meta name="author" content="P. Scordino">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="libraries/widgets/nvd3/js/fisheye.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/linuxday_logo.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/Rlogo.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introduzione all'ambiente di programmazione $R$</h1>
+    <h2>Linux Day - Biella 2016</h2>
+    <p>P. Scordino<br/></p>
+  </hgroup>
+    <a href="https://github.com/freeEagle76/https://github.com/FreeEagle76/R-Coding-Slides.git/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Sommario</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="http://twit88.com/blog/wp-content/uploads/2008/07/windowslivewriterstatistical-bf51r-project-2.jpg" style="float:right;align="middle";width:100px;height:80px;"></p>
+
+<ol>
+<li>I dati</li>
+<li>L&#39;ambiente <a href="https://www.r-project.org/"><a href="https://www.r-project.org/">\(R\)</a></a></li>
+<li>Perchè usare <a href="https://www.r-project.org/"><a href="https://www.r-project.org/">\(R\)</a></a> ?</li>
+<li>Gli oggetti di <a href="https://www.r-project.org/"><a href="https://www.r-project.org/">\(R\)</a></a>
+
+<ul>
+<li>Scalari</li>
+<li>Vettori</li>
+<li>Matrici e Array</li>
+<li>Dataframe</li>
+<li>Liste</li>
+</ul></li>
+<li>Input/Output</li>
+<li>Funzioni personalizzate</li>
+<li>Cenni sui cicli</li>
+<li>Le funzioni grafiche</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2">
+<hgroup>
+  <h2>I dati</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Data_visualization_process_v1.png/800px-Data_visualization_process_v1.png" style=align="middle";width:700px;height:500px;"></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-3">
+<hgroup>
+  <h2>La curva d&#39;apprendimento</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><img src="https://pbs.twimg.com/media/CiSMsEpXEAATXry.jpg:large" alt=""></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="quote," id="slide-4">
+<hgroup>
+  <h2>L&#39;ambiente <a href="https://www.r-project.org/">\(R\)</a></h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p>L&#39;ambiente <a href="https://www.r-project.org/"><a href="https://www.r-project.org/">\(R\)</a></a> è caratterizzato da una <strong>console</strong>, dove vengono digitati i comandi, un <strong>workspace</strong>, dove vengono memorizzati tutti gli oggetti creati e un <strong>editor di testo</strong> che permette di scrivere una serie di comandi in sequenza e salvarli in un file <strong>nomefile.R</strong> chiamato <em>script</em>.</p>
+
+<p><a href="https://www.r-project.org/"><a href="https://www.r-project.org/">\(R\)</a></a> memorizza due file <strong><em>.Rdata</em></strong> e <strong><em>.Rhistory</em></strong> nella directory di lavoro, il primo contiene tutti gli oggetti creati durante la sessione di lavoro ossia memorizza il workspace, il secondo contiene la lista dei comandi usati nella stessa sessione di lavoro.</p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="quote," id="slide-5">
+<hgroup>
+  <h2>L&#39;ambiente <a href="https://www.r-project.org/"><a href="https://www.r-project.org/">\(R\)</a></a></h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><h3>RGui per Windows</p>
+
+<p><img src="http://tutorials.iq.harvard.edu/R/Rintro/images/Rgui.png" style=align="middle";width:700px;height:400px;"></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="quote," id="slide-6">
+<hgroup>
+  <h2>L&#39;ambiente <a href="https://www.r-project.org/">\(R\)</a></h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><h3><a href="https://www.rstudio.com/">RStudio</a> GUI multipiattaforma</p>
+
+<p><img src="http://wiki.awf.forst.uni-goettingen.de/wiki/images/f/f6/02-RStudio.jpg" style=align="middle";width:750px;height:400px;"></p>
+  
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Perchè usare <a href="https://www.r-project.org/">\(R\)</a> ?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li><strong>Libero</strong>, per usarlo non c&#39;è bisogno di comprare nessuna licenza.</li>
+<li><strong>Open source</strong>, a codice aperto, chiunque può esaminare il codice e modificarlo per effettuare migliorie.</li>
+<li><strong><em>Modulabile</em></strong>, esistono più di 6000 packages raggruppati nel <a href="https://cran.r-project.org/">CRAN</a>, con funzioni che trovano applicazione in svariati campi, che possono essere installati ampliando le già notevoli potenzialità di <a href="https://www.r-project.org/">\(R\)</a>.</li>
+<li><strong><em>Customizzabile</em></strong>, chiunque può crearsi funzioni o addirittura packages su misura a seconda delle proprie esigenze.</li>
+<li><strong><em>Multipiattaforma</em></strong>, può essere installato su computer con diversi SO.</li>
+<li><strong><em>Comunità/Supporto</em></strong>, <a href="https://www.r-project.org/">\(R\)</a> ha dietro una grossa comunità online di utilizzatori e sviluppatori che mettono a disposizione la loro esperienza a tutti, attraverso newsletter, forum, blog, siti.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Perchè usare <a href="https://www.r-project.org/">\(R\)</a> ?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Sul sito <a href="http://r4stats.com/2016/06/08/r-passes-sas-in-scholarly-use-finally/">r4stat.com</a> è stato pubblicato un interessante articolo sulla popolarità dei vari software usati nell&#39;ambito dell&#39;elaborazione dei dati, di seguito riporto due grafici riassuntivi.</p>
+
+<p><img src="http://i0.wp.com/r4stats.com/wp-content/uploads/2012/04/Fig_2e_ScholarlyImpactSubset.png?resize=640%2C443" style="float:right;width:450px;height:350px;"></p>
+
+<p><img src="http://i0.wp.com/r4stats.com/wp-content/uploads/2012/04/Fig_2d_ScholarlyImpact.png" style="float:left;width:450px;height:350px;"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>Scalari numerici</em></strong></p>
+
+<p>Gli scalari sono semplicemente delle variabili a cui è stato assegnato un valore che può essere numerico, logico, character(stringa).</p>
+
+<pre><code class="r">x&lt;- 14
+y&lt;- 23
+</code></pre>
+
+<pre><code class="r">x
+</code></pre>
+
+<pre><code>## [1] 14
+</code></pre>
+
+<pre><code class="r">y
+</code></pre>
+
+<pre><code>## [1] 23
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-10">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>Scalari logici</em></strong></p>
+
+<pre><code class="r">a&lt;- TRUE
+b&lt;- FALSE
+
+class(a)
+</code></pre>
+
+<pre><code>## [1] &quot;logical&quot;
+</code></pre>
+
+<pre><code class="r">a==b
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-11">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>Scalari character (stringhe)</em></strong></p>
+
+<pre><code class="r">n&lt;- &quot;Pasquale&quot;
+c&lt;- &quot;Scordino&quot;
+class(n)
+</code></pre>
+
+<pre><code>## [1] &quot;character&quot;
+</code></pre>
+
+<pre><code class="r">n_c&lt;- paste(n,c)
+
+n_c
+</code></pre>
+
+<pre><code>## [1] &quot;Pasquale Scordino&quot;
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-12">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>I vettori</em></strong></p>
+
+<p>I vettori sono una seguenza monodimensionale di valori, con indice [i] che come per gli scalari possono essere numeri, logici e character (stringhe). Anche sui vettori si possono effettuare una serie di manipolazioni come per gli scalari.</p>
+
+<pre><code class="r">x&lt;- c(23,44,55,33,66,21,32,45,65)
+y&lt;- c(TRUE,FALSE,TRUE,TRUE)
+z&lt;- c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
+</code></pre>
+
+<pre><code class="r">x&lt;- runif(10, 1, 10)
+x
+</code></pre>
+
+<pre><code>##  [1] 3.360735 4.252963 4.927438 9.431956 9.036599 6.135805 2.182162
+##  [8] 1.969150 1.124821 2.719755
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-13">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>I vettori</em></strong></p>
+
+<pre><code class="r">plot(x, main = &quot;Plot del vettore x&quot; ,ylab = &quot;Valori del vettore x&quot;, col=&quot;red&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" /></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-14">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>Le matrici</em></strong></p>
+
+<p>Le matrici possono essere considerate un insieme di vettori che vanno a formare una griglia di valori <strong><em>numerici</em></strong> bidimensionale con indici [i,j]</p>
+
+<pre><code class="r">m.1&lt;- matrix(1:25, 5, 5)
+m.1
+</code></pre>
+
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    6   11   16   21
+## [2,]    2    7   12   17   22
+## [3,]    3    8   13   18   23
+## [4,]    4    9   14   19   24
+## [5,]    5   10   15   20   25
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-15">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>Gli array</em></strong></p>
+
+<p>Gli array sono un insieme di matrici che formarmano un cubo o un parallelepipedo di valori <strong><em>numerici</em></strong> tridimensionali con indici [i,j,z]</p>
+
+<pre><code class="r">m.1&lt;- array(1:8, c(1,4,2))
+m.1
+</code></pre>
+
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    5    6    7    8
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-16">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>Gli array</em></strong></p>
+
+<pre><code class="r">m.2&lt;- array(1:16, c(2,4,2))
+m.2
+</code></pre>
+
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5    7
+## [2,]    2    4    6    8
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    9   11   13   15
+## [2,]   10   12   14   16
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-17">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>I Dataframe</em></strong></p>
+
+<p>I dataframe sono delle matrici che possono contenere vettori di tutti i tipi, numerici, character (stringhe), logici</p>
+
+<pre><code class="r">L3 &lt;- LETTERS[1:3]
+L&lt;- sample(L3, 7, replace = TRUE)
+data.frame(1, 1:7, L)
+</code></pre>
+
+<pre><code>##   X1 X1.7 L
+## 1  1    1 A
+## 2  1    2 A
+## 3  1    3 A
+## 4  1    4 C
+## 5  1    5 A
+## 6  1    6 C
+## 7  1    7 C
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-18">
+<hgroup>
+  <h2>Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><strong><em>Le liste</em></strong></p>
+
+<p>Le liste sono dei vettori che possono contenere tutti i tipi di oggetti (vettori, matrici, array, dataframe, liste)</p>
+
+<pre><code class="r">L&lt;- list(1:3, LETTERS[1:3], 5:6)
+L
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 1 2 3
+## 
+## [[2]]
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;
+## 
+## [[3]]
+## [1] 5 6
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Input/Output in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I principali comandi per <strong><em>importare</em></strong> dataset dentro l&#39;ambiente \(R\) sono:</p>
+
+<pre><code class="r"># read.csv()
+
+# read.table()
+</code></pre>
+
+<p>I principali comandi per <strong><em>esportare</em></strong> dataset elaborati fuori l&#39;ambiente \(R\) sono:</p>
+
+<pre><code class="r"># write.csv()
+
+# write.table()
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20">
+<hgroup>
+  <h2>Funzioni personalizzate in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p>\(R\) da la possibilità di costruire funzioni personalizzate che potrebbero non essere presenti nei packages di base o in quelli raccolti nel <a href="https://cran.r-project.org/">CRAN</a></p>
+
+<pre><code class="r">f&lt;- function(x, y){ 
+    z &lt;- x^2 + y^2; 
+    x+y+z }
+
+f(0:7, 1)
+</code></pre>
+
+<pre><code>## [1]  2  4  8 14 22 32 44 58
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-21">
+<hgroup>
+  <h2>Funzioni personalizzate in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r">normistmed &lt;- function(quantinevuoi){
+              temp &lt;- rnorm(quantinevuoi)
+              hist(temp)
+              mean(temp)    
+              } 
+
+normistmed(1000)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" /></p>
+
+<pre><code>## [1] 0.02088545
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-22">
+<hgroup>
+  <h2>Le strutture di controllo (i cicli) in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r">x &lt;- y &lt;- c(1:3)
+for (i in 1:length(x)){  
+     y[i] &lt;- log(x[i])
+     print(y[i])}
+</code></pre>
+
+<pre><code>## [1] 0
+## [1] 0.6931472
+## [1] 1.098612
+</code></pre>
+
+<pre><code class="r">y &lt;- log(x)                                
+y
+</code></pre>
+
+<pre><code>## [1] 0.0000000 0.6931472 1.0986123
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-23">
+<hgroup>
+  <h2>Le strutture di controllo (i cicli) in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r">sapply(x, log)
+</code></pre>
+
+<pre><code>## [1] 0.0000000 0.6931472 1.0986123
+</code></pre>
+
+<pre><code class="r">lapply(x, log)
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 0
+## 
+## [[2]]
+## [1] 0.6931472
+## 
+## [[3]]
+## [1] 1.098612
+</code></pre>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Le funzioni di plot in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>\(R\) ha  una ricca quantità di funzioni e parametri per costruire qualsiasi tipo di grafico</p>
+
+<pre><code class="r">require(stats) # for lowess, rpois, rnorm
+plot(cars, col=&quot;red&quot;)
+lines(lowess(cars), col=&quot;blue&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25">
+<hgroup>
+  <h2>Le funzioni di plot in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" /></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-26">
+<hgroup>
+  <h2>Le funzioni di plot in <a href="https://www.r-project.org/">\(R\)</a>:</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r">ggplot() +
+  geom_point(data = df, aes(x = gp, y = y)) +
+  geom_point(data = ds, aes(x = gp, y = mean),
+                        colour = &#39;red&#39;, size = 3) +
+  geom_errorbar(data = ds, aes(x = gp, y = mean,
+                    ymin = mean - sd, ymax = mean + sd),
+                    colour = &#39;red&#39;, width = 0.4)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" /></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Grafico interattivo</h2>
+  </hgroup>
+  <article data-timings="">
+    <div id = 'chart1' class = 'rChart nvd3'></div>
+
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawchart1()
+    });
+    function drawchart1(){  
+      var opts = {
+ "dom": "chart1",
+"width":    800,
+"height":    400,
+"x": "Hair",
+"y": "Freq",
+"group": "Eye",
+"type": "multiBarChart",
+"id": "chart1" 
+},
+        data = [
+ {
+ "Hair": "Black",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             32 
+},
+{
+ "Hair": "Brown",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             53 
+},
+{
+ "Hair": "Red",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Black",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             11 
+},
+{
+ "Hair": "Brown",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             50 
+},
+{
+ "Hair": "Red",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             30 
+},
+{
+ "Hair": "Black",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Brown",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             25 
+},
+{
+ "Hair": "Red",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              5 
+},
+{
+ "Hair": "Black",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Brown",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":             15 
+},
+{
+ "Hair": "Red",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              8 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
+         
+        
+          
+        
+
+        
+        
+        
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Risorse web</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="https://blog.rstudio.org/">https://blog.rstudio.org/</a></li>
+<li><a href="http://statisticaconr.blogspot.it/">http://statisticaconr.blogspot.it/</a></li>
+<li><a href="https://www.r-bloggers.com/">https://www.r-bloggers.com/</a></li>
+<li><a href="http://www.statmethods.net/">http://www.statmethods.net/</a></li>
+<li><a href="http://blog.revolutionanalytics.com/">http://blog.revolutionanalytics.com/</a></li>
+<li><a href="http://shinyapps.org/apps/RGraphCompendium/index.php">http://shinyapps.org/apps/RGraphCompendium/index.php</a></li>
+<li><a href="http://rgraphgallery.blogspot.it/">http://rgraphgallery.blogspot.it/</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <article data-timings="">
+    <p><img src="https://www.r-project.org/logo/Rlogo.svg" style="float:right;align="middle";width:100px;height:50px;"></p>
+
+<h2>GRAZIE!!!</h2>
+
+<p><img src="https://lh3.googleusercontent.com/-w4xTmmx8Pnc/VZMY_YXulII/AAAAAAAAQXM/QV_AVXO9kfY/w256-h256/15-Most-Interesting-Linux-Facts.png" style="float:left;align="middle";width:300px;height:250px;"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Sommario'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='I dati'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='La curva d&#39;apprendimento'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='L&#39;ambiente <a href="https://www.r-project.org/">\(R\)</a>'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='L&#39;ambiente <a href="https://www.r-project.org/"><a href="https://www.r-project.org/">\(R\)</a></a>'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='L&#39;ambiente <a href="https://www.r-project.org/">\(R\)</a>'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Perchè usare <a href="https://www.r-project.org/">\(R\)</a> ?'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Perchè usare <a href="https://www.r-project.org/">\(R\)</a> ?'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Gli oggetti di <a href="https://www.r-project.org/">\(R\)</a>:'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Input/Output in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Funzioni personalizzate in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Funzioni personalizzate in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Le strutture di controllo (i cicli) in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Le strutture di controllo (i cicli) in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Le funzioni di plot in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Le funzioni di plot in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Le funzioni di plot in <a href="https://www.r-project.org/">\(R\)</a>:'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Grafico interattivo'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Risorse web'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='NA'>
+         29
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
