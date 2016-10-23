@@ -17,7 +17,7 @@ widgets:
 - quiz
 - bootstrap
 github :
-  user: freeEagle76
+  user: FreeEagle76
   repo: https://github.com/FreeEagle76/R-Coding-Slides.git
 ---
 
@@ -302,7 +302,7 @@ normistmed(1000)
 
 --- &vcenter
 
-## Le strutture di controllo (i cicli) in [$R$](https://www.r-project.org/):
+## Le strutture di controllo (cicli) in [$R$](https://www.r-project.org/):
 
 ```{r}
 
@@ -317,7 +317,7 @@ y
 
 --- &vcenter
 
-## Le strutture di controllo (i cicli) in [$R$](https://www.r-project.org/):
+## Le strutture di controllo (cicli) in [$R$](https://www.r-project.org/):
 
 
 ```{r}

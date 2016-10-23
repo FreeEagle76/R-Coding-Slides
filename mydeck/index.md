@@ -17,7 +17,7 @@ widgets:
 - quiz
 - bootstrap
 github :
-  user: freeEagle76
+  user: FreeEagle76
   repo: https://github.com/FreeEagle76/R-Coding-Slides.git
 ---
 
@@ -206,8 +206,8 @@ x
 ```
 
 ```
-##  [1] 3.360735 4.252963 4.927438 9.431956 9.036599 6.135805 2.182162
-##  [8] 1.969150 1.124821 2.719755
+##  [1] 5.929770 3.224951 6.251041 7.031660 5.040180 7.297447 4.639945
+##  [8] 7.750485 6.176635 5.763871
 ```
 
 
@@ -222,7 +222,7 @@ ___I vettori___
 plot(x, main = "Plot del vettore x" ,ylab = "Valori del vettore x", col="red")
 ```
 
-<img src="assets/fig/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" />
 
 --- &vcenter
 
@@ -317,12 +317,12 @@ data.frame(1, 1:7, L)
 
 ```
 ##   X1 X1.7 L
-## 1  1    1 A
-## 2  1    2 A
-## 3  1    3 A
-## 4  1    4 C
-## 5  1    5 A
-## 6  1    6 C
+## 1  1    1 C
+## 2  1    2 B
+## 3  1    3 C
+## 4  1    4 B
+## 5  1    5 B
+## 6  1    6 A
 ## 7  1    7 C
 ```
 
@@ -408,15 +408,15 @@ normistmed <- function(quantinevuoi){
 normistmed(1000)
 ```
 
-<img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
 
 ```
-## [1] 0.02088545
+## [1] 0.02883393
 ```
 
 --- &vcenter
 
-## Le strutture di controllo (i cicli) in [$R$](https://www.r-project.org/):
+## Le strutture di controllo (cicli) in [$R$](https://www.r-project.org/):
 
 
 ```r
@@ -443,7 +443,7 @@ y
 
 --- &vcenter
 
-## Le strutture di controllo (i cicli) in [$R$](https://www.r-project.org/):
+## Le strutture di controllo (cicli) in [$R$](https://www.r-project.org/):
 
 
 
@@ -483,13 +483,18 @@ plot(cars, col="red")
 lines(lowess(cars), col="blue")
 ```
 
-<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 
 --- &vcenter
 
 ## Le funzioni di plot in [$R$](https://www.r-project.org/):
 
-<img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
+
+```
+## Loading required package: ggplot2
+```
+
+<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
 
 --- &vcenter
 
@@ -506,11 +511,16 @@ ggplot() +
                     colour = 'red', width = 0.4)
 ```
 
-<img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 ---
 
 ## Grafico interattivo
+
+
+```
+## Loading required package: rCharts
+```
 
 
 <div id = 'chart1' class = 'rChart nvd3'></div>
